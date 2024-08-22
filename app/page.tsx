@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import connectWallet from '@/app/utils/connectWallet'
+import { connectWallet, getCurrentWalletConnected } from '@/app/utils/connectWallet'
 
 const Home = () => {
   //State variables
@@ -11,16 +11,18 @@ const Home = () => {
   const [url, setUrl] = useState<string>('')
 
   useEffect(() => {
-    //Todo
+    //Check if wallet is already connected
     const fetchData = async () => {
-
+      const { address, status } = await getCurrentWalletConnected();
+      setWalletAddress(address);
+      setStatus(status)
     }
 
     fetchData();
   }, [])
 
   const connectWalletPressed = async () => {
-    //TODO: implement
+    //If Metamask is installed, it returns the wallet address and current status
     const walletResponse = await connectWallet();
     setStatus(walletResponse.status);
     setWalletAddress(walletResponse.address);
