@@ -38,9 +38,11 @@ input:focus {
   border-color: rgba(4, 4, 5, 0.4);
 }
 
+
 button {
   padding: 9px 16px;
   max-height: 40px;
+  /*box-shadow: 4px 4px 15px 0 rgb(0 0 0 / 20%);*/
   border-color: #254cdd;
   color: #254cdd;
   background-color: white;
@@ -53,12 +55,12 @@ button {
   cursor:pointer;
 }
 
-#title {
-  padding-top: 32px;
+button:hover {
+  margin-top: -1px;
 }
 
-#status {
-  color:red;
+#title {
+  padding-top: 32px;
 }
 
 .uploadFile {
@@ -74,6 +76,16 @@ button {
   margin-bottom: 50px;
   line-height: 16px;
 }
+/*
+#walletButton:focus {
+  outline:none;
+  border: none;
+}
+
+#walletButton:hover {
+  outline:none;
+  border :none;
+} */
 
 #mintButton {
   margin-top: 40px;
