@@ -1,10 +1,11 @@
 'use client'
 import { useState, useEffect } from 'react'
+import connectWallet from '@/app/utils/connectWallet'
 
 const Home = () => {
   //State variables
   const [walletAddress, setWalletAddress] = useState<string>('')
-  const [status, setStatus] = useState<string>('')
+  const [status, setStatus] = useState<any>('')
   const [name, setName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [url, setUrl] = useState<string>('')
@@ -20,7 +21,9 @@ const Home = () => {
 
   const connectWalletPressed = async () => {
     //TODO: implement
-
+    const walletResponse = await connectWallet();
+    setStatus(walletResponse.status);
+    setWalletAddress(walletResponse.address);
   };
 
   const onMintPressed = async () => {
