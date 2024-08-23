@@ -32,9 +32,13 @@ const Home = () => {
 
   const onMintPressed = async () => {
     //TODO: implement
-    const { status } = await mintNFT({ url, name, description });
+    const { success,status } = await mintNFT({ url, name, description });
     setStatus(status);
-
+    if (success) {
+      setName("");
+      setDescription("");
+      setUrl("");
+    }
   };
 
   const addWalletListener = () => {
