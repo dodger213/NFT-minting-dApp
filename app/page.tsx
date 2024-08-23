@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { connectWallet, getCurrentWalletConnected } from '@/app/utils/connectWallet'
+import { connectWallet, getCurrentWalletConnected, mintNFT } from '@/app/utils/connectWallet'
 
 const Home = () => {
 
@@ -32,6 +32,8 @@ const Home = () => {
 
   const onMintPressed = async () => {
     //TODO: implement
+    const { status } = await mintNFT({ url, name, description });
+    setStatus(status);
 
   };
 
@@ -102,11 +104,10 @@ const Home = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </form>
-        
         <button id="mintButton" className='py-2 px-4 mx-auto max-h-[40px] border border-[#254cdd] rounded-lg font-semibold cursor-pointer mt-10 bg-[#254cdd] text-white' onClick={onMintPressed}>
           Mint NFT
         </button>
-        
+
         <p id="status" className='my-4 text-red-500'>
           {status}
         </p>
