@@ -7,6 +7,8 @@ const Home = () => {
   //State variables
   const [walletAddress, setWalletAddress] = useState<string>('')
   const [status, setStatus] = useState<any>('')
+  
+  //NFT metadata state
   const [name, setName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [url, setUrl] = useState<string>('')
@@ -49,7 +51,7 @@ const Home = () => {
           setStatus("👆🏽 Write a message in the text-field above.");
         } else {
           setWalletAddress("");
-          setStatus("🦊 Connect to Metamask using the top right button.");
+          setStatus("🦊 Connect to Metamask using the top right button. haha");
         }
       });
     } else {
