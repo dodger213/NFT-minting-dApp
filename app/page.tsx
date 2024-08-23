@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { connectWallet, getCurrentWalletConnected } from '@/app/utils/connectWallet'
 
 const Home = () => {
+
   //State variables
   const [walletAddress, setWalletAddress] = useState<string>('')
   const [status, setStatus] = useState<any>('')
@@ -101,12 +102,15 @@ const Home = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </form>
+        
         <button id="mintButton" className='py-2 px-4 mx-auto max-h-[40px] border border-[#254cdd] rounded-lg font-semibold cursor-pointer mt-10 bg-[#254cdd] text-white' onClick={onMintPressed}>
           Mint NFT
         </button>
+        
         <p id="status" className='my-4 text-red-500'>
           {status}
         </p>
+
       </div>
     </div>
   );
