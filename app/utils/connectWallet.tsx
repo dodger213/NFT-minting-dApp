@@ -35,12 +35,11 @@ export const connectWallet = async () => {
       status: (
         <span>
           <p>
-            {" "}
-            🦊{" "}
-            <Link href={`https://metamask.io/download.html`}>
-              You must install Metamask, a virtual Ethereum wallet, in your
-              browser.
-            </Link>
+          { " "}
+              🦊{ " " }
+                <Link href={ `https://metamask.io/download.html` }>
+                  "You must install Metamask, a virtual Ethereum wallet, in your browser."
+                </Link>
           </p>
         </span>
       ),
@@ -75,14 +74,13 @@ export const getCurrentWalletConnected = async () => {
       address: "",
       status: (
         <span>
-          <p>
-            {" "}
-            🦊{" "}
-            <Link href={`https://metamask.io/download.html`}>
-              You must install Metamask, a virtual Ethereum wallet, in your
-              browser.
-            </Link>
-          </p>
+        <p>
+        { " "}
+            🦊{ " " }
+              <Link href={ `https://metamask.io/download.html` }>
+                You must install Metamask, a virtual Ethereum wallet, in your browser.
+              </Link>
+        </p>
         </span>
       )
     }
@@ -113,26 +111,27 @@ export const mintNFT = async (JSONBody: JSONBody) => {
   //load smart contract
   window.contract = await new web3.eth.Contract(contractABI, contractAddress);
   const transactionParameters = {
-    to:contractAddress,
-    from:window.ethereum.selectedAddress,
-    'data':window.contract.methods.mintNFT(window.ethereum.selectedAddress, tokenURI).encodeABI()
-  
+    to: contractAddress,
+    from: window.ethereum.selectedAddress,
+    'data': window.contract.methods.mintNFT(window.ethereum.selectedAddress, tokenURI).encodeABI()
+
   }
 
   try {
     const txHash = await window.ethereum
       .request({
-        method:'eth_sendTransaction',
-        params:[transactionParameters],
+        method: 'eth_sendTransaction',
+        params: [transactionParameters],
       });
-      return {
-        success:true,
-        status:"✅ Check out your transaction on Etherscan: https://sepolia.etherscan.io/tx/" + txHash
-      }
-  }catch (error) {
-        return {
-            success: false,
-            status: "😥 Something went wrong: " + error.message
-        }
+    return {
+      success: true,
+      status: "✅ Check out your transaction on Etherscan: https://sepolia.etherscan.io/tx/" + txHash
     }
+  } catch (error) {
+    const errorMessage = (error as Error).message || 'Something Went wrong!'
+    return {
+      success: false,
+      status: `😥 ${errorMessage}`
+    }
+  }
 }
