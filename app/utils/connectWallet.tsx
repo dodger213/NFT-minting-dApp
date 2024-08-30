@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createAlchemyWeb3 } from '@alch/alchemy-web3';
+
 import type { JSONBody } from "./pinata";
 import { pinJSONToIPFS } from "./pinata";
 import contractABI from '@/app/contract-abi.json'
@@ -87,6 +88,7 @@ export const getCurrentWalletConnected = async () => {
 }
 
 export const mintNFT = async (JSONBody: JSONBody) => {
+
   const { url, name, description } = JSONBody;
 
   if (url.trim() == "" || name.trim() == "" || description.trim() == "") {
