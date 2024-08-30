@@ -7,6 +7,7 @@ export type JSONBody = {
   name: string,
   description: string
 }
+
 const key = process.env.NEXT_PUBLIC_PINATA_KEY;
 const secret = process.env.NEXT_PUBLIC_PINATA_SECRET;
 
@@ -32,7 +33,6 @@ export const pinJSONToIPFS = async (JSONBody: JSONBody) => {
         success: false,
         message: error.message,
       }
-
     });
 };
 
