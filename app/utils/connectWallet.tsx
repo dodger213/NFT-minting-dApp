@@ -12,7 +12,6 @@ if (!alchemyKey) {
 
 const web3 = createAlchemyWeb3(alchemyKey)
 
-
 export const connectWallet = async () => {
   if (window.ethereum) {
     try {
